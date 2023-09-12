@@ -10,11 +10,14 @@ public class Problem2 {
         while(status){
             status = false;
             answer = getAnswerWithoutDuplicate(cryptogram);
+            status = compareTwoLength(cryptogram, answer);
             cryptogram = answer;
         }
         return answer;
     }
-
+    private static boolean compareTwoLength(String cryptogram, String answer){
+        return !(cryptogram.length() == answer.length());
+    }
     private static String getAnswerWithoutDuplicate(String cryptogram){
         if(cryptogram.length()==0) return "";
 
