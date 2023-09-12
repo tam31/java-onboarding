@@ -19,6 +19,10 @@ class Problem1 {
             return exceptionNum;
         }
 
+        int pobiLargeValue = getLargeValue(pobi);
+        int crongLargeValue = getLargeValue(crong);
+
+
         return ans;
     }
 
@@ -36,5 +40,35 @@ class Problem1 {
             return false;
         }
         return true;
+    }
+
+    private static int getSum(int number){
+        int sum = 0;
+        while(number !=0){
+            sum += number%10;
+            number /= 10;
+        }
+        return sum;
+    }
+
+    private static int getMultiplication(int number){
+        int sum = 1;
+        while(number != 0){
+            sum *= number%10;
+            number /=10;
+        }
+        return sum;
+    }
+
+    private static int getLargeValue(List<Integer> checkList){
+        int leftSumValue = getSum(checkList.get(0));
+        int leftMultiplicationValue = getMultiplication(checkList.get(0));
+        int rightSumValue = getSum(checkList.get(1));
+        int rightMultiplicationValue = getMultiplication(checkList.get(1));
+
+        int leftLargeValue = Math.max(leftSumValue, leftMultiplicationValue);
+        int rigthLargeValue = Math.max(rightSumValue, rightMultiplicationValue);
+
+        return Math.max(leftLargeValue, rigthLargeValue);
     }
 }
