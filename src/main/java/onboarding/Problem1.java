@@ -22,6 +22,8 @@ class Problem1 {
         int pobiLargeValue = getLargeValue(pobi);
         int crongLargeValue = getLargeValue(crong);
 
+        ans = getAnswerCompareValue(pobiLargeValue, crongLargeValue);
+
 
         return ans;
     }
@@ -70,5 +72,14 @@ class Problem1 {
         int rigthLargeValue = Math.max(rightSumValue, rightMultiplicationValue);
 
         return Math.max(leftLargeValue, rigthLargeValue);
+    }
+
+    private static int getAnswerCompareValue(int pobiValue, int crongValue){
+        if(pobiValue == crongValue){
+            return compareNum;
+        }else if(pobiValue > crongValue){
+            return winPobiNum;
+        }
+        return winCrongNum;
     }
 }
