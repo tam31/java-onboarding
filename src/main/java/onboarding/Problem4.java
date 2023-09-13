@@ -27,7 +27,7 @@ public class Problem4 {
     }
 
     private static char changeUpperAlpahet(char word){
-       
+        return (char)('A' + ('Z'-word));
     }
 
     private static boolean checkLowerAlpahet(char word){
