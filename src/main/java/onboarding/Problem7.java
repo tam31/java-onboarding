@@ -22,11 +22,16 @@ public class Problem7 {
             String userA = friend.get(0);
             String userB = friend.get(1);
             if(checkFriend(userA,userB,user)){
-
+                String friendFriend = getFriend(userA,userB);
+                System.out.println(friendFriend);
             }
         }
 
         return answer;
+    }
+
+    private static String getFriend(String userA, String userB){
+        return userFriendList.contains(userA) ? userB : userA;
     }
 
     private static boolean checkFriend(String userA, String userB, String user){
