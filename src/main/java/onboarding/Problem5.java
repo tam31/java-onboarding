@@ -13,6 +13,7 @@ public class Problem5 {
         for(int i=0; i<listMoney.length; i++){
             int getMoney = getAnswerMoney(money, listMoney[i]);
             answer.add(getMoney);
+            money = changesMoney(money, listMoney[i]);
         }
         return answer;
     }
@@ -21,4 +22,7 @@ public class Problem5 {
         return money/listMoney;
     }
 
+    private static int changesMoney(int money, int listMoney){
+        return money%listMoney;
+    }
 }
