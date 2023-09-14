@@ -23,7 +23,7 @@ public class Problem7 {
             String userB = friend.get(1);
             if(checkFriend(userA,userB,user)){
                 String friendFriend = getFriend(userA,userB);
-                System.out.println(friendFriend);
+                recommendFriendList.put(friendFriend, recommendFriendList.getOrDefault(friendFriend,0)+10);
             }
         }
 
