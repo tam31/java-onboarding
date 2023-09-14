@@ -27,6 +27,10 @@ public class Problem7 {
             }
         }
 
+        for(String friend: visitors){
+            recommendFriendList.put(friend, recommendFriendList.getOrDefault(friend, 0)+1);
+        }
+
         return answer;
     }
 
