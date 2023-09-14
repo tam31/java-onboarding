@@ -23,10 +23,10 @@
 | [ ["jm@email.com", "제이엠"], ["jason@email.com", "제이슨"], ["woniee@email.com", "워니"], ["mj@email.com", "엠제이"], ["nowm@email.com", "이제엠"] ] | ["jason@email.com", "jm@email.com", "mj@email.com"] |
 
 ### 기능 요구사항 및 체크리스트
-- [] 두글자 이상 중복되는 닉네임 찾기
-  - [] HashMap을 이용하여 2글자씩 닉네임과 이메일 넣기
-  - [] 중복되는 Key가 있다면 해당 닉네임은 중복임으로 result 값에 이메일 넣기
-  - [] 중복되는 Key를 구하더라도 2글자씩 HashMap에 넣기
+- [ O ] 두글자 이상 중복되는 닉네임 찾기
+  - [ O ] HashMap을 이용하여 2글자씩 닉네임과 이메일 넣기
+  - [ O ] 중복되는 Key가 있다면 해당 닉네임은 중복임으로 result 값에 이메일 넣기
+  - [ O ] 중복되는 Key를 구하더라도 2글자씩 HashMap에 넣기
 - [] 중복되는 이메일 지우기
 - [] 오름차순으로 정렬
 - [] 값 리턴
