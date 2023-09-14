@@ -47,6 +47,9 @@ public class Problem7 {
             return coreB-coreA;
         });
 
+        for(int i=0; i<5&&i<recommendFriends.size(); i++){
+            answer.add(recommendFriends.get(i)[0]);
+        }
         return answer;
     }
 
