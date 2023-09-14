@@ -7,13 +7,15 @@ public class Problem6 {
     private static HashMap<String, String> checkDuplication = new HashMap<>();
     private static Set<String> duplicationEmail = new HashSet<>();
     public static List<String> solution(List<List<String>> forms) {
-        List<String> answer = new ArrayList<>();
+        List<String> answer;
 
         for(List<String> list: forms){
             String email = list.get(0);
             String name = list.get(1);
             getAnswerCheckDulications(name, email);
         }
+        answer = new ArrayList<>(duplicationEmail);
+        Collections.sort(answer);
         return answer;
     }
 
