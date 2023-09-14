@@ -24,3 +24,13 @@
 | user | friends | visitors | result |
 | --- | --- | --- | --- |
 | "mrko" | [ ["donut", "andole"], ["donut", "jun"], ["donut", "mrko"], ["shakevan", "andole"], ["shakevan", "jun"], ["shakevan", "mrko"] ] | ["bedi", "bedi", "donut", "bedi", "shakevan"] | ["andole", "jun", "bedi"] |
+
+
+### 기능 요구사항 및 체크리스트
+- [] friends에서 사용자와 친구 찾기
+- [] friends에서 사용자와 친구인 친구 +10
+- [] 사용자의 타임라인 방문 +1
+- [] 점수가 가장 높은 순으로 정렬 후 5명 리턴
+  - [] 점수가 0점인 경우 제거 
+  - [] 점수가 같은 경우 이름순
+- [] 결과 리턴
