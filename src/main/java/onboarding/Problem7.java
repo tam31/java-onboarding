@@ -13,7 +13,8 @@ public class Problem7 {
             String userA = friend.get(0);
             String userB = friend.get(1);
             if(checkUserFriend(userA, userB, user)){
-
+                String userFriend = getUserFriend(userA, userB, user);
+                userFriendList.add(userFriend);
             }
         }
 
@@ -22,5 +23,8 @@ public class Problem7 {
 
     private static boolean checkUserFriend(String userA, String userB, String user){
         return user.equals(userA) || user.equals(userB);
+    }
+    private static String getUserFriend(String userA, String userB, String user){
+        return user.equals(userA) ? userB : userA;
     }
 }
