@@ -28,6 +28,7 @@ public class Problem7 {
         }
 
         for(String friend: visitors){
+            if(userFriendList.contains(friend)) continue;
             recommendFriendList.put(friend, recommendFriendList.getOrDefault(friend, 0)+1);
         }
 
