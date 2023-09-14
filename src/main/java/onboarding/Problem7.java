@@ -18,7 +18,21 @@ public class Problem7 {
             }
         }
 
+        for(List<String> friend: friends){
+            String userA = friend.get(0);
+            String userB = friend.get(1);
+            if(checkFriend(userA,userB,user)){
+
+            }
+        }
+
         return answer;
+    }
+
+    private static boolean checkFriend(String userA, String userB, String user){
+        if(user.equals(userA) || user.equals(userB)) return false;
+        if(userFriendList.contains(userA)|| userFriendList.contains(userB)) return true;
+        return false;
     }
 
     private static boolean checkUserFriend(String userA, String userB, String user){
