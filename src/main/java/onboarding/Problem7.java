@@ -31,6 +31,21 @@ public class Problem7 {
             recommendFriendList.put(friend, recommendFriendList.getOrDefault(friend, 0)+1);
         }
 
+        List<String[]> recommendFriends = new ArrayList<>();
+        for(String key: recommendFriendList.keySet()){
+            String core =  Integer.toString(recommendFriendList.get(key));
+            recommendFriends.add(new String[]{key, core});
+        }
+
+        Collections.sort(recommendFriends, (o1,o2)->{
+            int coreA = Integer.parseInt(o1[1]);
+            int coreB = Integer.parseInt(o2[1]);
+            if(coreA==coreB){
+                return o1[0].compareTo(o2[0]);
+            }
+            return coreB-coreA;
+        });
+
         return answer;
     }
 
