@@ -4,20 +4,13 @@ import java.util.*;
 
 public class Problem7 {
 
-    private static Set<String> userFriendList = new HashSet<>();
+    private static Set<String> userFriendList;
     private static Map<String, Integer> recommendFriendList = new HashMap<>();
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = new ArrayList<>(Collections.emptyList());
 
-        for(List<String> friend: friends){
-            String userA = friend.get(0);
-            String userB = friend.get(1);
-            if(checkUserFriend(userA, userB, user)){
-                String userFriend = getUserFriend(userA, userB, user);
-                userFriendList.add(userFriend);
-            }
-        }
-
+        userFriendList =  getUserFriendList(user, friends);
+        
         for(List<String> friend: friends){
             String userA = friend.get(0);
             String userB = friend.get(1);
@@ -63,10 +56,20 @@ public class Problem7 {
         return false;
     }
 
+    private static String getUserFriend(String userA, String userB, String user){
+        return user.equals(userA) ? userB : userA;
+    }
     private static boolean checkUserFriend(String userA, String userB, String user){
         return user.equals(userA) || user.equals(userB);
     }
-    private static String getUserFriend(String userA, String userB, String user){
-        return user.equals(userA) ? userB : userA;
+
+    private static Set<String> getUserFriendList(String user, List<List<String>> friends){
+        Set<String> userFriend = new HashSet<>();
+        for(List<String> friend: friends){
+            if(checkUserFriend(friend.get(0), friend.get(1), user)){
+                userFriend.add(getUserFriend(friend.get(0), friend.get(1), user));
+            }
+        }
+        return userFriend;
     }
 }
