@@ -5,20 +5,13 @@ import java.util.*;
 public class Problem7 {
 
     private static Set<String> userFriendList;
-    private static Map<String, Integer> recommendFriendList = new HashMap<>();
+    private static Map<String, Integer> recommendFriendList;
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = new ArrayList<>(Collections.emptyList());
 
         userFriendList =  getUserFriendList(user, friends);
-        
-        for(List<String> friend: friends){
-            String userA = friend.get(0);
-            String userB = friend.get(1);
-            if(checkFriend(userA,userB,user)){
-                String friendFriend = getFriend(userA,userB);
-                recommendFriendList.put(friendFriend, recommendFriendList.getOrDefault(friendFriend,0)+10);
-            }
-        }
+        recommendFriendList = getRecommendFriendList(user, friends);
+
 
         for(String friend: visitors){
             if(userFriendList.contains(friend)) continue;
@@ -50,19 +43,6 @@ public class Problem7 {
         return userFriendList.contains(userA) ? userB : userA;
     }
 
-    private static boolean checkFriend(String userA, String userB, String user){
-        if(user.equals(userA) || user.equals(userB)) return false;
-        if(userFriendList.contains(userA)|| userFriendList.contains(userB)) return true;
-        return false;
-    }
-
-    private static String getUserFriend(String userA, String userB, String user){
-        return user.equals(userA) ? userB : userA;
-    }
-    private static boolean checkUserFriend(String userA, String userB, String user){
-        return user.equals(userA) || user.equals(userB);
-    }
-
     private static Set<String> getUserFriendList(String user, List<List<String>> friends){
         Set<String> userFriend = new HashSet<>();
         for(List<String> friend: friends){
@@ -71,5 +51,29 @@ public class Problem7 {
             }
         }
         return userFriend;
+    }
+
+    private static boolean checkUserFriend(String userA, String userB, String user){
+        return user.equals(userA) || user.equals(userB);
+    }
+    private static String getUserFriend(String userA, String userB, String user){
+        return user.equals(userA) ? userB : userA;
+    }
+
+    private static Map<String, Integer> getRecommendFriendList(String user, List<List<String>> friends){
+        Map<String, Integer> recommendFriendScore = new HashMap<>();
+        for(List<String> friend: friends){
+            if(checkFriend(friend.get(0), friend.get(1), user)){
+                String friendFriend = getFriend(friend.get(0),friend.get(1));
+                recommendFriendScore.put(friendFriend, recommendFriendScore.getOrDefault(friendFriend,0)+10);
+            }
+        }
+        return recommendFriendScore;
+    }
+
+    private static boolean checkFriend(String userA, String userB, String user){
+        if(user.equals(userA) || user.equals(userB)) return false;
+        if(userFriendList.contains(userA)|| userFriendList.contains(userB)) return true;
+        return false;
     }
 }
