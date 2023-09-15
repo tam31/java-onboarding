@@ -9,14 +9,17 @@ public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
         List<String> answer;
 
+        splitFormsList(forms);
+        answer = new ArrayList<>(duplicationEmail);
+        Collections.sort(answer);
+        return answer;
+    }
+    private static void splitFormsList(List<List<String>> forms){
         for(List<String> list: forms){
             String email = list.get(0);
             String name = list.get(1);
             getAnswerCheckDuplications(name, email);
         }
-        answer = new ArrayList<>(duplicationEmail);
-        Collections.sort(answer);
-        return answer;
     }
 
     private static void getAnswerCheckDuplications(String name, String email){
@@ -29,8 +32,6 @@ public class Problem6 {
 
     private static void isNotDulicationName(String checkName, String email) {
         if(!checkDuplication.containsKey(checkName)) checkDuplication.put(checkName, email);
-
-
     }
 
     private static void isDuplicationName(String checkName, String email){
