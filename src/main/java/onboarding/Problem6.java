@@ -22,13 +22,21 @@ public class Problem6 {
     private static void getAnswerCheckDuplications(String name, String email){
         for(int i=0; i<=name.length()-2; i++){
             String checkName = name.substring(i,i+2);
-            if(checkDuplication.containsKey(checkName)){
-                duplicationEmail.add(email);
-                duplicationEmail.add(checkDuplication.get(checkName));
-            }else{
-                checkDuplication.put(checkName, email);
-            }
+            isDuplicationName(checkName, email);
+            isNotDulicationName(checkName, email);
         }
     }
 
+    private static void isNotDulicationName(String checkName, String email) {
+        if(!checkDuplication.containsKey(checkName)) checkDuplication.put(checkName, email);
+
+
+    }
+
+    private static void isDuplicationName(String checkName, String email){
+        if(checkDuplication.containsKey(checkName)){
+            duplicationEmail.add(email);
+            duplicationEmail.add(checkDuplication.get(checkName));
+        }
+    }
 }
