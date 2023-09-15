@@ -15,12 +15,10 @@ public class Problem7 {
 
         List<String[]> recommendFriends = recommendFriendScoreList();
         Collections.sort(recommendFriends, (o1,o2)->{
-            int coreA = Integer.parseInt(o1[1]);
-            int coreB = Integer.parseInt(o2[1]);
-            if(coreA==coreB){
+            if(Integer.parseInt(o1[1])==Integer.parseInt(o2[1])){
                 return o1[0].compareTo(o2[0]);
             }
-            return coreB-coreA;
+            return Integer.parseInt(o2[1])-Integer.parseInt(o1[1]);
         });
 
         for(int i=0; i<5&&i<recommendFriends.size(); i++){
