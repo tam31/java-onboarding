@@ -11,12 +11,8 @@ public class Problem7 {
 
         userFriendList =  getUserFriendList(user, friends);
         recommendFriendList = getRecommendFriendList(user, friends);
+        getVisitorsFriendScore(visitors);
 
-
-        for(String friend: visitors){
-            if(userFriendList.contains(friend)) continue;
-            recommendFriendList.put(friend, recommendFriendList.getOrDefault(friend, 0)+1);
-        }
 
         List<String[]> recommendFriends = new ArrayList<>();
         for(String key: recommendFriendList.keySet()){
@@ -75,5 +71,12 @@ public class Problem7 {
         if(user.equals(userA) || user.equals(userB)) return false;
         if(userFriendList.contains(userA)|| userFriendList.contains(userB)) return true;
         return false;
+    }
+
+    private static void getVisitorsFriendScore(List<String> visitors){
+        for(String friend: visitors){
+            if(userFriendList.contains(friend)) continue;
+            recommendFriendList.put(friend, recommendFriendList.getOrDefault(friend, 0)+1);
+        }
     }
 }
