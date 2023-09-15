@@ -7,7 +7,7 @@ public class Problem7 {
     private static Set<String> userFriendList;
     private static Map<String, Integer> recommendFriendList;
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-        List<String> answer = new ArrayList<>(Collections.emptyList());
+        List<String> answer;
 
         userFriendList =  getUserFriendList(user, friends);
         recommendFriendList = getRecommendFriendList(user, friends);
@@ -21,14 +21,8 @@ public class Problem7 {
             return Integer.parseInt(o2[1])-Integer.parseInt(o1[1]);
         });
 
-        for(int i=0; i<5&&i<recommendFriends.size(); i++){
-            answer.add(recommendFriends.get(i)[0]);
-        }
+        answer = getAnswerRecommendFriends(recommendFriends);
         return answer;
-    }
-
-    private static String getFriend(String userA, String userB){
-        return userFriendList.contains(userA) ? userB : userA;
     }
 
     private static Set<String> getUserFriendList(String user, List<List<String>> friends){
@@ -44,10 +38,10 @@ public class Problem7 {
     private static boolean checkUserFriend(String userA, String userB, String user){
         return user.equals(userA) || user.equals(userB);
     }
+
     private static String getUserFriend(String userA, String userB, String user){
         return user.equals(userA) ? userB : userA;
     }
-
     private static Map<String, Integer> getRecommendFriendList(String user, List<List<String>> friends){
         Map<String, Integer> recommendFriendScore = new HashMap<>();
         for(List<String> friend: friends){
@@ -65,6 +59,10 @@ public class Problem7 {
         return false;
     }
 
+    private static String getFriend(String userA, String userB){
+        return userFriendList.contains(userA) ? userB : userA;
+    }
+
     private static void getVisitorsFriendScore(List<String> visitors){
         for(String friend: visitors){
             if(userFriendList.contains(friend)) continue;
@@ -79,5 +77,13 @@ public class Problem7 {
             friendScoreList.add(new String[]{key, score});
         }
         return friendScoreList;
+    }
+
+    private static List<String> getAnswerRecommendFriends(List<String[]> recommendFriends){
+        List<String> isTopRecommendFriends = new ArrayList<>();
+        for(int i=0; i<5&&i<recommendFriends.size(); i++){
+            isTopRecommendFriends.add(recommendFriends.get(i)[0]);
+        }
+        return isTopRecommendFriends;
     }
 }
