@@ -13,13 +13,7 @@ public class Problem7 {
         recommendFriendList = getRecommendFriendList(user, friends);
         getVisitorsFriendScore(visitors);
 
-
-        List<String[]> recommendFriends = new ArrayList<>();
-        for(String key: recommendFriendList.keySet()){
-            String core =  Integer.toString(recommendFriendList.get(key));
-            recommendFriends.add(new String[]{key, core});
-        }
-
+        List<String[]> recommendFriends = recommendFriendScoreList();
         Collections.sort(recommendFriends, (o1,o2)->{
             int coreA = Integer.parseInt(o1[1]);
             int coreB = Integer.parseInt(o2[1]);
@@ -78,5 +72,14 @@ public class Problem7 {
             if(userFriendList.contains(friend)) continue;
             recommendFriendList.put(friend, recommendFriendList.getOrDefault(friend, 0)+1);
         }
+    }
+
+    private static List<String[]> recommendFriendScoreList(){
+        List<String[]> friendScoreList = new ArrayList<>();
+        for(String key: recommendFriendList.keySet()){
+            String score =  Integer.toString(recommendFriendList.get(key));
+            friendScoreList.add(new String[]{key, score});
+        }
+        return friendScoreList;
     }
 }
